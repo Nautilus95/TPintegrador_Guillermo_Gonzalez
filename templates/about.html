@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Acerca del sistema{% endblock %}
+{% block body_class %}about-page{% endblock %}
+{% block content %}
+<h1>Acerca del sistema</h1>
+
+<p>
+    Sistema de Gestión de Estudiantes desarrollado como trabajo práctico.
+</p>
+
+<h2>Tecnologías utilizadas</h2>
+
+<ul>
+    <li>Python</li>
+    <li>Flask</li>
+    <li>PostgreSQL</li>
+    <li>HTML5</li>
+    <li>CSS3</li>
+</ul>
+
+<p>
+    Permite realizar operaciones CRUD sobre estudiantes,
+    incluyendo búsqueda, ordenamiento y validaciones.
+</p>
+
+<a class="btn" href="{{ url_for('index') }}">Volver al inicio</a>
+{% endblock %}
