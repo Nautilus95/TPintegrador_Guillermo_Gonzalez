@@ -1,7 +1,9 @@
-
+/* ==========================================================================
+   1. ESTILOS GENERALES Y BASE
+   ========================================================================== */
 body {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background:url(./img/pexels-steve-12939551.jpg);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url(./img/pexels-steve-12939551.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -9,86 +11,89 @@ body {
     color: #2c3e50;
 }
 
+/* Fondo especial para la página de About */
+body.about-page {
+    background: #0372c2;
+}
+
 .container {
-    width: 98%;
-    max-width: 1400px;
-    margin: 145px auto;
-    padding: 25px;
-    border-radius: 18px;
-    background-color: white;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
 }
 
 h1 {
     margin-bottom: 5px;
+    color:white;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    
 }
 
-.subtitle {
-    color: #90a4ae;
-    margin-top: 0;
-}
 
+/* ==========================================================================
+   2. BOTONES Y ACCIONES
+   ========================================================================== */
 .actions, .search {
     margin: 18px 0;
 }
 
-.btn, button {
+.btn, button, .edit, .delete {
     transition: 0.3s;
     display: inline-block;
-    background: #1976d2;
-    color: white;
     padding: 10px 14px;
     border: none;
     border-radius: 8px;
     text-decoration: none;
     cursor: pointer;
+    font-weight: 500;
+    vertical-align: middle;
 }
 
-.btn:hover,
-button:hover {
+/* Botón Principal (Azul) */
+.btn, button {
+    background: #1976d2;
+    color: white;
+}
+
+.btn:hover, button:hover {
     background: #1565c0;
     transform: translateY(-2px);
 }
 
+/* Botón Secundario (Gris) */
 .secondary {
     background: #607d8b;
 }
 
-.search input {
-    width: 500px;
-    padding: 10px;
-    border: 1px solid #cfd8dc;
-    border-radius: 8px;
+.secondary:hover {
+    background: #455a64;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    border-radius: 10px;
-    overflow: hidden;
+/* Botón Editar (Azul Oscuro) */
+.edit {
+    padding: 7px 17px;
+    background-color: #1565c0;
+    color: #ffffff;
 }
 
-th, td {
-    padding: 12px;
-    border-bottom: 1px solid #dce3e8;
-    text-align: left;
+.edit:hover {
+    background-color: #0d47a1;
+    transform: translateY(-2px);
 }
 
-th {
-    background: white;
-    color: white;
+/* Botón Eliminar (Rojo) */
+.delete {
+    padding: 7px 17px;
+    background-color: #c62828;
+    color: #ffffff;
 }
 
-tr:hover {
-   background: #e8f0f7;
-}
-
-tr:nth-child(even) {
-    background: #fcfcfc;
-}
-
-tr {
-    transition: 0.2s;
+.delete:hover {
+    background-color: #b71c1c;
+    transform: translateY(-2px);
 }
 
 .link {
@@ -97,22 +102,15 @@ tr {
     font-weight: bold;
 }
 
-.edit {
-    color: #ffffff;
-    background-color: #1565c0;
+/* ==========================================================================
+   3. FORMULARIOS Y BUSCADOR
+   ========================================================================== */
+.search input {
+    width: 500px;
+    padding: 10px;
+    border: 1px solid #cfd8dc;
+    border-radius: 8px;
 }
-
-.delete {
-    color: #ffffff;
-    background-color: #c62828;
-    
-    
-}
-
-.delete:hover {
-    background-color: #c62828;
-}
-
 
 .form-card {
     max-width: 450px;
@@ -123,7 +121,9 @@ tr {
     margin-top: 12px;
     font-weight: bold;
 }
-
+.order{
+    color:white;
+}
 .form-card input {
     width: 100%;
     padding: 10px;
@@ -132,8 +132,7 @@ tr {
     border-radius: 8px;
 }
 
-.form-card input:focus,
-.search input:focus {
+.form-card input:focus, .search input:focus {
     outline: none;
     border-color: #1976d2;
     box-shadow: 0 0 5px rgba(25, 118, 210, 0.3);
@@ -143,6 +142,59 @@ tr {
     margin-top: 18px;
 }
 
+/* ==========================================================================
+   4. TABLA DE ESTUDIANTES (DISEÑO UNIFORME)
+   ========================================================================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white; /* Base blanca sólida para toda la tabla */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+th {
+    background: #011a32; /* Encabezado azul a juego con los botones */
+    color: white;
+    padding: 12px;
+    border-bottom: 1px solid #dce3e8;
+    text-align: left;
+}
+
+tr {
+    transition: 0.2s;
+    background-color: white; /* Forzamos a que todas las filas sean blancas */
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    background-color: transparent !important; /* Evita que las celdas se pinten solas */
+}
+
+/* Efecto Hover: Pinta la FILA COMPLETA de forma ordenada */
+tr:hover td {
+    background-color: #f5f5f5 !important; /* Gris muy suave y limpio */
+    color: #2c3e50; /* Mantiene el texto oscuro legible */
+}
+
+/* Protege el encabezado para que no cambie de color con el mouse */
+thead tr:hover {
+    background-color: #1976d2 !important;
+    color: white;
+}
+
+.empty {
+    text-align: center;
+    color: #777;
+    padding: 20px;
+}
+
+/* ==========================================================================
+   5. ALERTAS Y MENSAJES
+   ========================================================================== */
 .alert {
     padding: 12px;
     margin-bottom: 15px;
@@ -159,69 +211,34 @@ tr {
     color: #c62828;
 }
 
-.empty {
-    text-align: center;
-    color: #777;
-}
-
-/* ----Responsive---- */
-
+/* ==========================================================================
+   6. RESPONSIVE (PANTALLAS MÓVILES)
+   ========================================================================== */
 @media (max-width: 768px) {
-
     .container {
         width: 95%;
         padding: 15px;
     }
-
+    
     .search input {
         width: 100%;
         box-sizing: border-box;
     }
-
+    
     table {
         display: block;
         overflow-x: auto;
         white-space: nowrap;
     }
-
-    .btn,
-    button {
+    
+    .btn, button, .edit, .delete {
         width: 100%;
         margin-bottom: 10px;
         text-align: center;
+        box-sizing: border-box;
     }
-
+    
     .form-card {
         max-width: 100%;
     }
-}
-
-
-/*---- Botón Editar------*/
-
-.edit {
-    display: inline-block;
-    padding: 7px 17px;
-    border-radius: 8px;
-    background-color: #1565c0;
-    color: #ffffff;
-    text-decoration: none;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.edit:hover {
-    background-color: #0d47a1;
-    transform: translateY(-2px);
-}
-/*------ Alineación para botones----- */
-.edit,
-.delete {
-    vertical-align: middle;
-}
-
-/* Fondo del About*/
-
-body.about-page {
-    background: #0372c2;
 }
